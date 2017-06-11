@@ -4,36 +4,22 @@
     <groupId>net.krinsoft</groupId>
     <artifactId>TeleportSuite</artifactId>
     <packaging>jar</packaging>
-    <version>2.2.4</version>
+    <version>2.3-SNAPSHOT</version>
     <name>TeleportSuite</name>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.build.number>DEV</project.build.number>
     </properties>
     <repositories>
-        <!-- Bukkit Repository -->
+        <!-- Spigot Repository -->
         <repository>
-            <releases>
-                <updatePolicy>always</updatePolicy>
-            </releases>
-            <id>bukkit-repo</id>
-            <url>http://repo.bukkit.org/content/groups/public</url>
+            <id>spigot-repo</id>
+            <url>https://hub.spigotmc.org/nexus/content/groups/public</url>
         </repository>
-        <!-- Multiverse Repository -->
+        <!-- Multi-verse Repository -->
         <repository>
-            <releases>
-                <updatePolicy>always</updatePolicy>
-            </releases>
-            <id>onarandombox</id>
+            <id>OnaRandomBox</id>
             <url>http://repo.onarandombox.com/content/groups/public</url>
-        </repository>
-        <!-- KrinSoft Repository -->
-        <repository>
-            <releases>
-                <updatePolicy>always</updatePolicy>
-            </releases>
-            <id>krinsoft</id>
-            <url>http://files.krinsoft.net:8085/nexus/content/groups/public</url>
         </repository>
     </repositories>
     <!-- Jenkins manager -->
@@ -43,9 +29,9 @@
     </ciManagement>
     <!-- End Jenkins -->
     <scm>
-        <developerConnection>scm:git:git@github.com:krinsdeath/TeleportSuite.git</developerConnection>
-        <connection>scm:git:git://github.com/krinsdeath/TeleportSuite.git</connection>
-        <url>https://github.com/krinsdeath/TeleportSuite</url>
+        <developerConnection>scm:git:git@github.com:WillWill56/TeleportSuite.git</developerConnection>
+        <connection>scm:git:git://github.com/WillWill56/TeleportSuite.git</connection>
+        <url>https://github.com/WillWill56/TeleportSuite</url>
     </scm>
     <profiles>
         <profile>
@@ -133,8 +119,9 @@
         <dependency>
             <groupId>org.bukkit</groupId>
             <artifactId>bukkit</artifactId>
-            <version>1.6.4-R2.0</version>
+            <version>1.12-R0.1-SNAPSHOT</version>
             <type>jar</type>
+            <scope>compile</scope>
         </dependency>
         <!-- End Bukkit -->
         <!-- Testing Dependencies -->
@@ -161,7 +148,7 @@
         <dependency>
             <groupId>com.pneumaticraft.commandhandler</groupId>
             <artifactId>CommandHandler</artifactId>
-            <version>7</version>
+            <version>10</version>
             <type>jar</type>
             <scope>compile</scope>
         </dependency>

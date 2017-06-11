@@ -11,14 +11,17 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.configuration.file.YamlConstructor;
 import org.bukkit.permissions.Permission;
 import org.bukkit.permissions.PermissionDefault;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.yaml.snakeyaml.reader.StreamReader;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.*;
 
 /**
@@ -145,7 +148,7 @@ public class TeleportSuite extends JavaPlugin {
     private void registerConfiguration() {
         configFile = new File(getDataFolder(), "config.yml");
         if (!configFile.exists()) {
-            getConfig().setDefaults(YamlConfiguration.loadConfiguration(this.getClass().getResourceAsStream("/config.yml")));
+            getConfig().setDefaults(YamlConfiguration.loadConfiguration(new InputStreamReader(this.getClass().getResourceAsStream("/config.yml"))));
             getConfig().options().copyDefaults(true);
             saveConfig();
         }
@@ -155,7 +158,7 @@ public class TeleportSuite extends JavaPlugin {
             getConfig().set("request", null);
             getConfig().set("error", null);
             getConfig().set("message", null);
-            getConfig().setDefaults(YamlConfiguration.loadConfiguration(this.getClass().getResourceAsStream("/config.yml")));
+            getConfig().setDefaults(YamlConfiguration.loadConfiguration(new InputStreamReader(this.getClass().getResourceAsStream("/config.yml"))));
             getConfig().options().copyDefaults(true);
             saveConfig();
         }
@@ -168,7 +171,7 @@ public class TeleportSuite extends JavaPlugin {
 
         userFile = new File(getDataFolder(), "users.yml");
         if (!userFile.exists()) {
-            getUsers().setDefaults(YamlConfiguration.loadConfiguration(this.getClass().getResourceAsStream("/users.yml")));
+            getUsers().setDefaults(YamlConfiguration.loadConfiguration(new InputStreamReader(this.getClass().getResourceAsStream("/users.yml"))));
             getUsers().options().copyDefaults(true);
             saveUsers();
         }
@@ -205,8 +208,9 @@ public class TeleportSuite extends JavaPlugin {
             File f = new File(getDataFolder(), language+".yml");
             InputStream in = this.getClass().getResourceAsStream("/"+language+".yml");
             if (in != null) {
+                InputStreamReader ins = new InputStreamReader(in);
                 FileConfiguration lang = YamlConfiguration.loadConfiguration(f);
-                lang.setDefaults(YamlConfiguration.loadConfiguration(in));
+                lang.setDefaults(YamlConfiguration.loadConfiguration(ins));
                 if (!f.exists()) {
                     lang.options().copyDefaults(true);
                 }
